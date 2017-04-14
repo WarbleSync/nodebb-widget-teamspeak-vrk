@@ -36,6 +36,10 @@ Widget.init = function(params, callback) {
 Widget.renderTeamspeakWidget = function(widget, callback) {
   console.log('[[[[[[[[[[[[[ RENDERING ]]]]]]]]]]]]]')
   var data = widget.data
+  //mock data for users
+  data['user-list'] = [{ 'name' :'user 1' }, {'name' :'user 2' } , {'name' :'user 3' }];
+  data['users-online'] = data['user-list'].length
+  // end mock data
   console.log(data)
   var pre = ""+fs.readFileSync(path.resolve(__dirname,'./public/templates/teamspeak.tpl'));
 	var rep = {};
