@@ -35,9 +35,11 @@ Widget.init = function(params, callback) {
 
 Widget.renderTeamspeakWidget = function(widget, callback) {
   console.log('[[[[[[[[[[[[[ RENDERING ]]]]]]]]]]]]]')
+  var data = widget.data
+  console.log(data)
   var pre = ""+fs.readFileSync(path.resolve(__dirname,'./public/templates/teamspeak.tpl'));
 	var rep = {};
-  callback(null, pre);
+  callback(null, templates.parse(pre, data));
 };
 
 Widget.defineWidgets = function(widgets, callback) {
