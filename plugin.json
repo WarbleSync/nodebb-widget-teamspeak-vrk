@@ -13,7 +13,7 @@
       { "hook": "filter:widgets.getWidgets", "method": "defineWidgets" }
     ],
     "css": [
-    	"./public/style.css"
+    	"./public/css/style.css"
     ],
     "templates": "./public/templates"
 }
