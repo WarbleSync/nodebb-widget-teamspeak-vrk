@@ -21,7 +21,7 @@
     <div class="ts3-online-users" >
       <ul class="list-group text-right">
         <!-- BEGIN user-list -->
-          <li> {user-list.name} </li>
+          <li class="list-group-item"> {user-list.name} </li>
         <!-- END user-list -->
       </ul>
     </div>

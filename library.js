@@ -35,6 +35,7 @@ Widget.init = function(params, callback) {
 
 Widget.renderTeamspeakWidget = function(widget, callback) {
   console.log('[[[[[[[[[[[[[ RENDERING ]]]]]]]]]]]]]')
+  //need to check for null before rendering!!!!
   var data = widget.data
   //mock data for users
   data['user-list'] = [{ 'name' :'user 1' }, {'name' :'user 2' } , {'name' :'user 3' }];
