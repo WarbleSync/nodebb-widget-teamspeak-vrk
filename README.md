@@ -1,1 +1,1 @@
-###NodeBB Teamspeak Plugin for VRK
+## NodeBB Teamspeak Plugin for VRK
