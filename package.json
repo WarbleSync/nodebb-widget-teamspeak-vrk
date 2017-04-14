@@ -1,6 +1,6 @@
 {
   "name": "nodebb-widget-teamspeak-vrk",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Teamspeak Server Widget",
   "main": "library.js",
   "repository": {
@@ -29,5 +29,11 @@
       "name": "WarbleSync",
       "email": "warblesync@gmail.com"
     }
-  ]
+  ],
+  "dependencies": {
+    "async": "^2.3.0"
+  },
+  "nbbpm": {
+    "compatibility": "^1.4.5"
+  }
 }
