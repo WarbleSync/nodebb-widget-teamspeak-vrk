@@ -1,11 +1,11 @@
 <link rel="stylesheet" type="text/css" href="/plugins/nodebb-widget-teamspeak-vrk/public/css/style.css">
 <div class="ts3-vrk-widget">
-  <h3 class="ts3-title" >
+  <h4 class="ts3-title" >
     {serverName}
     <span class="small">
       ({serverAddress})
     </span>
-  </h3>
+  </h4>
 
   <a class="btn btn-primary ts3-join-button" role="button" href="ts3server://{serverAddress}">
     <div class="">join server</div>
