@@ -1,9 +1,11 @@
 'use strict';
 
-var async = require('async'),
+var async =  module.parent.require('async'),
 fs = require('fs'),
 path = require('path'),
 templates = module.parent.require('templates.js'),
+TeamSpeakClient = require("node-teamspeak"),
+util = require("util"),
 app;
 
 var Widget = {
@@ -36,15 +38,58 @@ Widget.init = function(params, callback) {
 Widget.renderTeamspeakWidget = function(widget, callback) {
   console.log('[[[[[[[[[[[[[ RENDERING ]]]]]]]]]]]]]')
   //need to check for null before rendering!!!!
-  var data = widget.data
-  //mock data for users
-  data['user-list'] = [{ 'name' :'user 1' }, {'name' :'user 2' } , {'name' :'user 3' }];
-  data['users-online'] = data['user-list'].length
-  // end mock data
-  console.log(data)
-  var pre = ""+fs.readFileSync(path.resolve(__dirname,'./public/templates/teamspeak.tpl'));
-	var rep = {};
-  callback(null, templates.parse(pre, data));
+	var serverData = {
+		'serverAddress': widget.data.address,
+		'serverQueryAddress': widget.data.sqaddress,
+		'serverQueryPort': widget.data.sqport || 10011,
+		'serverVID': widget.data.sid || 1,
+		'username': widget.data.username,
+		'password': widget.data.password
+	}
+	var rep = {
+		'serverName': widget.data.name || 'Teamspeak Server',
+		'serverAddress': serverData.serverAddress,
+		'clients': []
+	};
+	var cl = new TeamSpeakClient(serverData.serverAddress, serverData.serverQueryPort);
+
+	cl.on('error', function(err){
+		console.log(err)
+	})
+
+	cl.on('connect', function(res){
+		cl.send(
+			'login',
+			{
+				client_login_name: serverData.username,
+				client_login_password: serverData.password
+			},
+			function(err, res){
+				if(err) { console.log(err) }
+				cl.send('use',
+				{ sid: serverData.serverVID },
+				function(err,res){
+					cl.send('clientlist', function(err, clients){
+						if(err) { console.log(err) }
+						async.each(clients,function(client, callback){
+							if(client.client_type !== 1){
+								rep.clients.push(client)
+							}
+							callback()
+						},
+						function(err){
+							async.sortBy(rep.clients, function(x, callback) {
+							    callback(null, x.client_nickname);
+							}, function(err,result) {
+							    rep.clients = result
+									var pre = ""+fs.readFileSync(path.resolve(__dirname,'./public/templates/teamspeak.tpl'));
+								  callback(null, templates.parse(pre, rep));
+							});
+						})
+					}) // end get clients
+				})
+			})
+	})
 };
 
 Widget.defineWidgets = function(widgets, callback) {

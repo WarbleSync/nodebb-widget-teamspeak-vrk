@@ -31,7 +31,8 @@
     }
   ],
   "dependencies": {
-    "async": "^2.3.0"
+    "async": "^2.3.0",
+    "node-teamspeak": "^1.0.10"
   },
   "nbbpm": {
     "compatibility": "^1.4.5"
