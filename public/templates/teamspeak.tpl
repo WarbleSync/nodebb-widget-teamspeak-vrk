@@ -8,7 +8,7 @@
   </h4>
 
   <a class="btn btn-primary ts3-join-button" role="button" href="ts3server://{serverAddress}">
-    <div class="">join server</div>
+    <div class="text-uppercase">join server</div>
   </a>
 
   <div class="ts3-online-clients" >
