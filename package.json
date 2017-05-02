@@ -1,0 +1,94 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "nodebb-widget-teamspeak-vrk",
+        "scope": null,
+        "escapedName": "nodebb-widget-teamspeak-vrk",
+        "name": "nodebb-widget-teamspeak-vrk",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/bwallace1231/Desktop/NodeBB"
+    ]
+  ],
+  "_from": "nodebb-widget-teamspeak-vrk@latest",
+  "_id": "nodebb-widget-teamspeak-vrk@1.0.0",
+  "_inCache": true,
+  "_location": "/nodebb-widget-teamspeak-vrk",
+  "_nodeVersion": "7.0.0",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/nodebb-widget-teamspeak-vrk-1.0.0.tgz_1492296477107_0.017632168950513005"
+  },
+  "_npmUser": {
+    "name": "WarbleSync",
+    "email": "warblesync@gmail.com"
+  },
+  "_npmVersion": "3.10.8",
+  "_phantomChildren": {
+    "lodash": "4.17.4"
+  },
+  "_requested": {
+    "raw": "nodebb-widget-teamspeak-vrk",
+    "scope": null,
+    "escapedName": "nodebb-widget-teamspeak-vrk",
+    "name": "nodebb-widget-teamspeak-vrk",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/nodebb-widget-teamspeak-vrk/-/nodebb-widget-teamspeak-vrk-1.0.0.tgz",
+  "_shasum": "50e49654c5127fb5d50289eb0e48dbd613e8c1cc",
+  "_shrinkwrap": null,
+  "_spec": "nodebb-widget-teamspeak-vrk",
+  "_where": "/Users/bwallace1231/Desktop/NodeBB",
+  "author": {
+    "name": "WarbleSync"
+  },
+  "bugs": {
+    "url": "https://github.com/WarbleSync/nodebb-widget-teamspeak-vrk.git/issues"
+  },
+  "dependencies": {
+    "async": "^2.3.0",
+    "node-teamspeak": "^1.0.10"
+  },
+  "description": "Teamspeak Server Widget",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "50e49654c5127fb5d50289eb0e48dbd613e8c1cc",
+    "tarball": "https://registry.npmjs.org/nodebb-widget-teamspeak-vrk/-/nodebb-widget-teamspeak-vrk-1.0.0.tgz"
+  },
+  "gitHead": "11f584e02ce0f367153159703424b80fc956e789",
+  "homepage": "https://github.com/WarbleSync/nodebb-widget-teamspeak-vrk",
+  "keywords": [
+    "teamspeak",
+    "nodebb",
+    "widget"
+  ],
+  "license": "MIT",
+  "main": "library.js",
+  "maintainers": [
+    {
+      "name": "WarbleSync",
+      "email": "warblesync@gmail.com"
+    }
+  ],
+  "name": "nodebb-widget-teamspeak-vrk",
+  "nbbpm": {
+    "compatibility": "^1.4.5"
+  },
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WarbleSync/nodebb-widget-teamspeak-vrk.git"
+  },
+  "scripts": {},
+  "version": "1.0.0"
+}

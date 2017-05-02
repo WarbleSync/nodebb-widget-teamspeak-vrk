@@ -1,0 +1,19 @@
+{
+    "id": "nodebb-widget-teamspeak-vrk",
+    "name": "NodeBB Teamspeak widget VRK",
+    "description": "Custom Teamspeak plugin for NodeBB.",
+    "url": "https://github.com/WarbleSync/nodebb-widget-teamspeak-vrk.git",
+    "library": "./library.js",
+    "staticDirs": {
+        "public": "public"
+    },
+    "hooks": [
+      { "hook": "static:app.load", "method": "init" },
+      { "hook": "filter:widget.render:teamspeak-vrk", "method": "renderTeamspeakWidget" },
+      { "hook": "filter:widgets.getWidgets", "method": "defineWidgets" }
+    ],
+    "css": [
+    	"./public/css/style.css"
+    ],
+    "templates": "./public/templates"
+}
