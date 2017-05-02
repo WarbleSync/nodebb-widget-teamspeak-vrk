@@ -20,9 +20,11 @@
 
     <div class="ts3-online-users" >
       <ul class="list-group text-right">
-        <!-- BEGIN clients -->
-          <li class="list-group-item"> {clients.client_nickname} </li>
-        <!-- END clients -->
+        <!-- IF clients.length -->
+          <!-- BEGIN clients -->
+            <li class="list-group-item"> {clients.client_nickname} </li>
+          <!-- END clients -->
+        <!-- ENDIF clients.length -->
       </ul>
     </div>
   </div>
