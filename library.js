@@ -54,7 +54,9 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
 	var cl = new TeamSpeakClient(serverData.serverAddress, serverData.serverQueryPort);
 
 	cl.on('error', function(err){
-		console.log(err)
+		console.log(err);
+		callback();
+		return
 	})
 
 	cl.on('connect', function(res){
