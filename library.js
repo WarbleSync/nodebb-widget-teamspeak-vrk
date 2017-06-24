@@ -65,7 +65,11 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
 				client_login_password: serverData.password
 			},
 			function(err, res){
-				if(err) { console.log(err) }
+				if(err) { 
+					console.log(err);
+					callback();
+					return
+				}
 				cl.send('use',
 				{ sid: serverData.serverVID },
 				function(err,res){
