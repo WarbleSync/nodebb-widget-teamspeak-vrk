@@ -54,7 +54,8 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
 	var cl = new TeamSpeakClient(serverData.serverAddress, serverData.serverQueryPort);
 
 	cl.on('error', function(err){
-		console.log(err)
+                console.log(err);
+                callback(null, '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>')
 	})
 
 	cl.on('connect', function(res){
@@ -65,7 +66,11 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
 				client_login_password: serverData.password
 			},
 			function(err, res){
-				if(err) { console.log(err) }
+				if(err) { 
+					console.log(err);
+					callback(null, '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>');
+					return
+				}
 				cl.send('use',
 				{ sid: serverData.serverVID },
 				function(err,res){
