@@ -52,7 +52,13 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
 		'clients': []
 	};
 	var cl = new TeamSpeakClient(serverData.serverAddress, serverData.serverQueryPort);
+	cl.setTimeout(4000);
 
+	cl.on('timeout', function(err){
+                console.log(err);
+                callback(null, '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>')
+	})
+	
 	cl.on('error', function(err){
                 console.log(err);
                 callback(null, '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>')
