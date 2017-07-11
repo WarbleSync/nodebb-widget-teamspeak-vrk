@@ -58,7 +58,7 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
                 console.log(err);
                 callback(null, '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>')
 	})
-	
+
 	cl.on('error', function(err){
                 console.log(err);
                 callback(null, '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>')
@@ -72,7 +72,7 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
 				client_login_password: serverData.password
 			},
 			function(err, res){
-				if(err) { 
+				if(err) {
 					console.log(err);
 					callback(null, '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>');
 					return
@@ -92,6 +92,7 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
 							async.sortBy(rep.clients, function(x, callback) {
 							    callback(null, x.client_nickname);
 							}, function(err,result) {
+								cl.send('quit');
 							    rep.clients = result
 									var pre = ""+fs.readFileSync(path.resolve(__dirname,'./public/templates/teamspeak.tpl'));
 								  callback(null, templates.parse(pre, rep));
