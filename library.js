@@ -22,7 +22,7 @@ Widget.init = function(params, callback) {
   function loadTemplate(template, next){
     fs.readFile(path.resolve(__dirname,'./public/templates/' + template), function(err,data){
       if(err){
-        console.log(err.message);
+        console.log('[teamspeak-vrk] - ' + err.message);
         return next(err);
       }
       Widget.templates[template] = data.toString();
@@ -36,7 +36,7 @@ Widget.init = function(params, callback) {
 };
 
 Widget.renderTeamspeakWidget = function(widget, callback) {
-  console.log('[[[[[[[[[[[[[ RENDERING ]]]]]]]]]]]]]')
+  console.log('[teamspeak-vrk] - Widget Rendering')
   //need to check for null before rendering!!!!
 	var serverData = {
 		'serverAddress': widget.data.address,
@@ -58,7 +58,7 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
                 console.log(err);
                 callback(null, '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>')
 	})
-	
+
 	cl.on('error', function(err){
                 console.log(err);
                 callback(null, '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>')
@@ -72,7 +72,7 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
 				client_login_password: serverData.password
 			},
 			function(err, res){
-				if(err) { 
+				if(err) {
 					console.log(err);
 					callback(null, '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>');
 					return
@@ -94,7 +94,8 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
 							}, function(err,result) {
 							    rep.clients = result
 									var pre = ""+fs.readFileSync(path.resolve(__dirname,'./public/templates/teamspeak.tpl'));
-								  callback(null, templates.parse(pre, rep));
+									widget.html = templates.parse(pre, rep);
+								  callback(null, widget);
 							});
 						})
 					}) // end get clients
