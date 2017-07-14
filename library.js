@@ -55,13 +55,15 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
 	cl.setTimeout(4000);
 
 	cl.on('timeout', function(err){
-                console.log(err);
-                callback(null, '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>')
+		console.log('[teamspeak-vrk] - ' + err);
+		widget.html = '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>'
+		callback(null, widget)
 	})
 
 	cl.on('error', function(err){
-                console.log(err);
-                callback(null, '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>')
+		console.log('[teamspeak-vrk] - ' + err);
+		widget.html = '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>'
+		callback(null, widget)
 	})
 
 	cl.on('connect', function(res){
@@ -73,15 +75,19 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
 			},
 			function(err, res){
 				if(err) {
-					console.log(err);
-					callback(null, '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>');
-					return
+					console.log('[teamspeak-vrk] - ' + err);
+					widget.html = '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>'
+					callback(null, widget)
 				}
 				cl.send('use',
 				{ sid: serverData.serverVID },
 				function(err,res){
 					cl.send('clientlist', function(err, clients){
-						if(err) { console.log(err) }
+						if(err) {
+							console.log('[teamspeak-vrk] - ' + err);
+							widget.html = '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>'
+							callback(null, widget)
+					 	}
 						async.each(clients,function(client, callback){
 							if(client.client_type !== 1){
 								rep.clients.push(client)
@@ -95,7 +101,21 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
 							    rep.clients = result
 									var pre = ""+fs.readFileSync(path.resolve(__dirname,'./public/templates/teamspeak.tpl'));
 									widget.html = templates.parse(pre, rep);
-								  callback(null, widget);
+									cl.send('logout',function(err,res){
+										if(err) {
+											console.log('[teamspeak-vrk] - ' + err);
+											widget.html = '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>'
+											callback(null, widget)
+									 	}
+										cl.send('quit',function(err,res){
+											if(err) {
+												console.log('[teamspeak-vrk] - ' + err);
+												widget.html = '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>'
+												callback(null, widget)
+										 	}
+											callback(null, widget);
+										})
+									})
 							});
 						})
 					}) // end get clients
