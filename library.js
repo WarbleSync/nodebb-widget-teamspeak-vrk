@@ -57,13 +57,13 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
 	cl.on('timeout', function(err){
 		console.log('[teamspeak-vrk] - ' + err);
 		widget.html = '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>'
-		callback(null, widget)
+		// callback(null, widget)
 	})
 
 	cl.on('error', function(err){
 		console.log('[teamspeak-vrk] - ' + err);
 		widget.html = '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>'
-		callback(null, widget)
+		// callback(null, widget)
 	})
 
 	cl.on('connect', function(res){
@@ -113,6 +113,7 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
 												widget.html = '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>'
 												callback(null, widget)
 										 	}
+											console.log('[teamspeak-vrk] - Render Complete')
 											callback(null, widget);
 										})
 									})
