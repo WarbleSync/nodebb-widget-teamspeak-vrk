@@ -90,5 +90,9 @@
     "url": "git+https://github.com/WarbleSync/nodebb-widget-teamspeak-vrk.git"
   },
   "scripts": {},
+<<<<<<< HEAD
   "version": "1.0.2"
+=======
+  "version": "1.0.5"
+>>>>>>> 494bc3f6581070c4b6367e305022de65e52afcf9
 }
