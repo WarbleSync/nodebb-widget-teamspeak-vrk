@@ -11,25 +11,35 @@
         "type": "tag"
       },
       "/Users/bwallace1231/Desktop/NodeBB"
+    ],
+    [
+      {
+        "raw": "nodebb-widget-teamspeak-vrk",
+        "scope": null,
+        "escapedName": "nodebb-widget-teamspeak-vrk",
+        "name": "nodebb-widget-teamspeak-vrk",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/bwallace1231/Desktop/NodeBB"
     ]
   ],
-  "_from": "nodebb-widget-teamspeak-vrk@latest",
-  "_id": "nodebb-widget-teamspeak-vrk@1.0.0",
+  "_from": "nodebb-widget-teamspeak-vrk",
+  "_id": "nodebb-widget-teamspeak-vrk@1.0.6",
   "_inCache": true,
   "_location": "/nodebb-widget-teamspeak-vrk",
-  "_nodeVersion": "7.0.0",
+  "_nodeVersion": "6.11.0",
   "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/nodebb-widget-teamspeak-vrk-1.0.0.tgz_1492296477107_0.017632168950513005"
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/nodebb-widget-teamspeak-vrk-1.0.6.tgz_1500245662601_0.9445426680613309"
   },
   "_npmUser": {
-    "name": "WarbleSync",
+    "name": "warblesync",
     "email": "warblesync@gmail.com"
   },
-  "_npmVersion": "3.10.8",
-  "_phantomChildren": {
-    "lodash": "4.17.4"
-  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
   "_requested": {
     "raw": "nodebb-widget-teamspeak-vrk",
     "scope": null,
@@ -40,10 +50,11 @@
     "type": "tag"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "https://registry.npmjs.org/nodebb-widget-teamspeak-vrk/-/nodebb-widget-teamspeak-vrk-1.0.0.tgz",
-  "_shasum": "50e49654c5127fb5d50289eb0e48dbd613e8c1cc",
+  "_resolved": "https://registry.npmjs.org/nodebb-widget-teamspeak-vrk/-/nodebb-widget-teamspeak-vrk-1.0.6.tgz",
+  "_shasum": "3d0623e179aa29837684d1ede00a8c7ee2957d33",
   "_shrinkwrap": null,
   "_spec": "nodebb-widget-teamspeak-vrk",
   "_where": "/Users/bwallace1231/Desktop/NodeBB",
@@ -90,9 +101,5 @@
     "url": "git+https://github.com/WarbleSync/nodebb-widget-teamspeak-vrk.git"
   },
   "scripts": {},
-<<<<<<< HEAD
-  "version": "1.0.2"
-=======
-  "version": "1.0.5"
->>>>>>> 494bc3f6581070c4b6367e305022de65e52afcf9
+  "version": "1.0.6"
 }
