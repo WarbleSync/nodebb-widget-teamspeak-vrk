@@ -3,7 +3,7 @@
 var async =  module.parent.require('async'),
 fs = require('fs'),
 path = require('path'),
-templates = module.parent.require('templates.js'),
+templates = require('benchpressjs'),
 TeamSpeakClient = require("node-teamspeak"),
 util = require("util"),
 app;
@@ -100,23 +100,29 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
 							}, function(err,result) {
 							    rep.clients = result
 									var pre = ""+fs.readFileSync(path.resolve(__dirname,'./public/templates/teamspeak.tpl'));
-									widget.html = templates.parse(pre, rep);
-									cl.send('logout',function(err,res){
-										if(err) {
-											console.log('[teamspeak-vrk] - ' + err);
-											widget.html = '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>'
-											callback(null, widget)
-									 	}
-										cl.send('quit',function(err,res){
+									templates.compileRender(pre,rep)
+									.then(html => {
+										widget.html = html;
+										cl.send('logout',function(err,res){
 											if(err) {
 												console.log('[teamspeak-vrk] - ' + err);
 												widget.html = '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>'
 												callback(null, widget)
-										 	}
-											console.log('[teamspeak-vrk] - Render Complete')
-											callback(null, widget);
+											}
+											cl.send('quit',function(err,res){
+												if(err) {
+													console.log('[teamspeak-vrk] - ' + err);
+													widget.html = '<h4>An Error occurred:<h4><pre>' + JSON.stringify(err, null, 2) + '</pre>'
+													callback(null, widget)
+												}
+												console.log('[teamspeak-vrk] - Render Complete')
+												callback(null, widget);
+											})
 										})
 									})
+									.catch(err => {
+										callback(err);
+									});
 							});
 						})
 					}) // end get clients
