@@ -89,7 +89,7 @@ Widget.renderTeamspeakWidget = function(widget, callback) {
 							callback(null, widget)
 					 	}
 						async.each(clients,function(client, callback){
-							if(client.client_type !== 1){
+							if(typeof client == 'object' && 'client_type' in client && client.client_type !== 1){
 								rep.clients.push(client)
 							}
 							callback()
